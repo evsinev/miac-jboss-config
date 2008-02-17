@@ -1,0 +1,18 @@
+#How to run program
+
+
+= Run program =
+
+To run program use the following command:
+ 
+ java -jar jbossinstaller.jar
+
+Then go to http://localhost:2410
+
+= How to change port number =
+ 
+ java -jar jbossinstaller.jar PORTNUMBER
+
+for example:
+ 
+ java -jar jbossinstaller.jar 9999
