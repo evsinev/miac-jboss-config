@@ -3,6 +3,7 @@
 
 == Run program ==
 
+Put jbossinstaller.jar in any place you want.
 To run program use the following command:
 {{{ 
  java -jar jbossinstaller.jar
