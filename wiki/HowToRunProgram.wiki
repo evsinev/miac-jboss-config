@@ -1,5 +1,9 @@
 = How to run program =
 
+== Before run ==
+
+You need to download [http://downloads.sourceforge.net/jboss/jboss-4.2.2.GA.zip jboss-4.2.2.GA.zip] and extract in any folder.
+
 
 == Run program ==
 
