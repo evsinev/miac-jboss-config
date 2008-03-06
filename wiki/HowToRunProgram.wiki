@@ -1,4 +1,6 @@
+#summary How to run program
 #labels Featured
+
 = How to run program =
 
 == Before run ==
