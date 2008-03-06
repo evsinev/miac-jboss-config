@@ -1,4 +1,4 @@
-#labels Phase-Implementation,jboss,datasource
+#labels Phase-Implementation,jboss,datasource,Featured
 #how to config jboss datasource
 
 =Intersystems Cache 5.x=
