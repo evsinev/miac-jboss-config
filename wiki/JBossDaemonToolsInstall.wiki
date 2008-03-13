@@ -14,7 +14,6 @@ sh ./jdk-1_5_0_15-linux-i586.bin
 == Install daemontools == 
 
 {{{
-su -
 mkdir -p /package
 chmod 1755 /package
 cd /package
@@ -47,7 +46,7 @@ chown -R jboss:jboss /var/log/jboss
 */service/jboss/run*
 {{{
 #!/bin/sh
-export JAVA_HOME="/opt/jdk1.6.0_04"
+export JAVA_HOME="/opt/jdk1.5.0_15"
 export JAVA_OPTS="-Xmx1024M -Xms256M -server" 
 exec 2>&1
 exec setuidgid jboss /opt/jboss-4.2.2.GA/bin/run.sh
