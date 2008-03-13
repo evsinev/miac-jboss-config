@@ -18,7 +18,7 @@ mkdir -p /package
 chmod 1755 /package
 cd /package
 wget http://cr.yp.to/daemontools/daemontools-0.76.tar.gz
-wget http://miac-jboss-config.googlecode.com/files/daemontools-0.76.errno.patch
+wget -O daemontools-0.76.errno.patch http://miac-jboss-config.googlecode.com/files/daemontools-0.76.errno.patch?id=2
 tar -xzpf daemontools-0.76.tar.gz
 cd admin
 patch -p0 < ../daemontools-0.76.errno.patch
