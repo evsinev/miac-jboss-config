@@ -1,5 +1,5 @@
 #summary How to install jboss with daemon tools
-#labels jboss,daemontools
+#labels jboss,daemontools,Featured
 
 == Install jdk 1.5.0 ==
 {{{
