@@ -4,7 +4,10 @@
 == Install jdk 1.5.0 ==
 {{{
 cd /opt
-wget -c http://192.18.108.137/ECom/EComTicketServlet/BEGINC0A36368669DA02DE4700BE423A6B156/-2147483648/2611528743/1/878882/878738/2611528743/2ts+/westCoastFSEND/jdk-1.5.0_15-B-oth-JPR/jdk-1.5.0_15-B-oth-JPR:5/jdk-1_5_0_15-linux-i586.bin
+JDKURL1='http://192.18.108.137/ECom/EComTicketServlet/BEGINC0A36368669DA02DE4700BE423A6B156/'
+JDKURL2='-2147483648/2611528743/1/878882/878738/2611528743/2ts+/westCoastFSEND/'
+JDKURL3='jdk-1.5.0_15-B-oth-JPR/jdk-1.5.0_15-B-oth-JPR:5/jdk-1_5_0_15-linux-i586.bin'
+wget -c -O jdk-1_5_0_15-linux-i586.bin "${JDKURL1}${JDKURL2}${JDKURL3}"
 sh ./jdk-1_5_0_15-linux-i586.bin
 }}}
 
