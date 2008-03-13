@@ -37,7 +37,7 @@ jar xf jboss-4.2.2.GA.zip
 
 {{{
 groupadd jboss
-useradd -G jboss jboss
+useradd -g jboss jboss
 chown -R jboss:jboss /opt/jboss-4.2.2.GA
 mkdir /var/log/jboss
 chown -R jboss:jboss /var/log/jboss
