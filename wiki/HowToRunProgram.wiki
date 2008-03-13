@@ -14,17 +14,20 @@ Or see [JBossDaemonToolsInstall] to install jboss with daemontools.
 Put jbossinstaller.jar in any place you want.
 To run program use the following command:
 {{{ 
- java -jar jbossinstaller.jar
+ java -jar mjc-X.X.X.jar
 }}}
 
 Then go to [http://localhost:2410]
 
 == How to change port number ==
 {{{ 
- java -jar jbossinstaller.jar PORTNUMBER
+ java -jar mjc-X.X.X.jar PORTNUMBER
 }}}
 for example:
  
 {{{ 
-java -jar jbossinstaller.jar 9999
+java -jar mjc-X.X.X.jar 9999
 }}}
+
+----
+Note: X.X.X - program version. For example: for version 0.0.5 use the mjc-0.0.5.jar
