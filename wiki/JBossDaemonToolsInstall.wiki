@@ -21,7 +21,7 @@ wget http://cr.yp.to/daemontools/daemontools-0.76.tar.gz
 wget http://miac-jboss-config.googlecode.com/files/daemontools-0.76.errno.patch
 tar -xzpf daemontools-0.76.tar.gz
 cd admin
-patch -P0 < ../daemontools-0.76.errno.patch
+patch -p0 < ../daemontools-0.76.errno.patch
 cd daemontools-0.76
 package/install
 }}}
