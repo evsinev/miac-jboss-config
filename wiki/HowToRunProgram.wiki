@@ -30,4 +30,4 @@ java -jar mjc-X.X.X.jar 9999
 }}}
 
 ----
-Note: X.X.X - program version. For example: for version 0.0.5 use the mjc-0.0.5.jar
+*Note:* _X.X.X - program version. For example: for version 0.0.5 use the mjc-0.0.5.jar_
