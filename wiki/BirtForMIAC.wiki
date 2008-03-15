@@ -25,11 +25,9 @@ mkdir -p /org/eclipse/birt/report/resource
 wget -c http://miac-jboss-config.googlecode.com/files/Messages_ru_RU.properties -O /org/eclipse/birt/report/resource/Messages_ru_RU.properties
 
 # vjdbc supports for BIRT
-{{{
 wget http://miac-jboss-config.googlecode.com/files/vjdbc.jar
 wget http://miac-jboss-config.googlecode.com/files/vjdbc-context.jar
 wget http://miac-jboss-config.googlecode.com/files/vjdbc-postgres.jar
-}}}
 
 # RIAMS war
 cp ${SOMEPLACE}/riams.war .
