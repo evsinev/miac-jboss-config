@@ -6,7 +6,8 @@
 
   # [http://www.eclipse.org/downloads/download.php?file=/birt/downloads/drops/R-R1-2_2_2-200802271210/birt-runtime-2_2_2.zip BIRT Report Engine]
   # [http://code.google.com/p/miac-jboss-config/downloads/list?q=label:birt VJDBC driver with EJB3 supports]
-  # Apache tomcat 
+  # [http://tomcat.apache.org/ Apache Tomcat > 5.5]
+  # MIAC web application (riams.war)
 
 == Download all needed software ==
 {{{
