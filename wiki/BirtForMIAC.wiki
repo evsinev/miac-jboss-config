@@ -18,7 +18,8 @@ wget -c 'http://www.eclipse.org/downloads/download.php?file=/birt/downloads/drop
 # VJDBC ejb3 data provider for MIAC
 wget -c 'http://miac-jboss-config.googlecode.com/files/vjdbc3.ear'
 # Russian transation for BIRT
-wget -c http://miac-jboss-config.googlecode.com/files/Messages_ru_RU.properties
+mkdir -p /org/eclipse/birt/report/resource
+wget -c http://miac-jboss-config.googlecode.com/files/Messages_ru_RU.properties -O /org/eclipse/birt/report/resource/Messages_ru_RU.properties
 
 
 }}}
@@ -29,6 +30,9 @@ JBOSS_HOME=/opt/jboss4.2.2-GA
 cp ${$BIRT_DIST}/vjdbc3.ear ${JBOSS_HOME}/server/default/deploy/ecom/
 }}}
 
-== Transate to russion ==
+== Transate to russian ==
 
 Copy Messages_ru_RU.properties to ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/viewservlets.jar into /org/eclipse/birt/report/resource directory of this jar file
+{{{
+jar uf ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/viewservlets.jar ${BIRT_DIST}/org
+}}}
