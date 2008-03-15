@@ -1,18 +1,34 @@
+#summary Install Birt 2.2.2 web report engine to work with MIAC program
 #labels BIRT,tomcat
-#Install Birt 2.2.2 web report engine to work with MIAC program
 
 == Required software ==
 
-# [http://www.eclipse.org/downloads/download.php?file=/birt/downloads/drops/R-R1-2_2_2-200802271210/birt-runtime-2_2_2.zip BIRT Report Engine]
-# VJDBC driver with EJB3 supports
-# 
 
-Add your content here.
+  # [http://www.eclipse.org/downloads/download.php?file=/birt/downloads/drops/R-R1-2_2_2-200802271210/birt-runtime-2_2_2.zip BIRT Report Engine]
+  # VJDBC driver with EJB3 supports
+  # Apache tomcat or jboss AS 4.2.2 
+
+== Download all needed software ==
+{{{
+export BIRT_DIST=/tmp/birt222
+mkdir $BIRT_DIST
+cd $BIRT_DIST
+# BIRT 2.2.2
+wget -c 'http://www.eclipse.org/downloads/download.php?file=/birt/downloads/drops/R-R1-2_2_2-200802271210/birt-runtime-2_2_2.zip&url=http://eclipse.i-logic.hu//birt/downloads/drops/R-R1-2_2_2-200802271210/birt-runtime-2_2_2.zip&mirror_id=70'
+# VJDBC ejb3 data provider for MIAC
+wget -c 'http://miac-jboss-config.googlecode.com/files/vjdbc3.ear'
+# Russian transation for BIRT
+wget -c http://miac-jboss-config.googlecode.com/files/Messages_ru_RU.properties
 
 
-= Details =
+}}}
+== Install vjdbc application on jboss ==
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+{{{
+JBOSS_HOME=/opt/jboss4.2.2-GA
+cp ${$BIRT_DIST}/vjdbc3.ear ${JBOSS_HOME}/server/default/deploy/ecom/
+}}}
+
+== Transate to russion ==
+
+Copy Messages_ru_RU.properties to ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/viewservlets.jar into /org/eclipse/birt/report/resource directory of this jar file
