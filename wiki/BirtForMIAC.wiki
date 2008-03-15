@@ -30,6 +30,15 @@ JBOSS_HOME=/opt/jboss4.2.2-GA
 cp ${$BIRT_DIST}/vjdbc3.ear ${JBOSS_HOME}/server/default/deploy/ecom/
 }}}
 
+== Install BIRT Report engine to tomcat ==
+Extract birt-runtime-2_2_2.zip/birt-runtime-2_2_2/birt.war to ${TOMCAT_HOME}/webapps/birt
+{{{
+jar xf ${$BIRT_DIST}/birt-runtime-2_2_2.zip birt-runtime-2_2_2/birt.war
+mkdir ${TOMCAT_HOME}/webapps/birt
+cd ${TOMCAT_HOME}/webapps/birt
+jar xf ${$BIRT_DIST}/birt-runtime-2_2_2/birt.war
+}}}
+
 == Transate to russian ==
 
 Copy Messages_ru_RU.properties to ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/viewservlets.jar into /org/eclipse/birt/report/resource directory of this jar file
