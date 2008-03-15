@@ -30,6 +30,9 @@ wget http://miac-jboss-config.googlecode.com/files/vjdbc.jar
 wget http://miac-jboss-config.googlecode.com/files/vjdbc-context.jar
 wget http://miac-jboss-config.googlecode.com/files/vjdbc-postgres.jar
 
+# BIRT 2.2 web.xml
+wget http://miac-jboss-config.googlecode.com/files/birt22-web.xml
+
 # RIAMS war
 cp ${SOMEPLACE}/riams.war .
 
@@ -92,7 +95,12 @@ Copy riams version
 cp $BIRT_DIST/riams/WEB-INF/buildnumber.txt ${TOMCAT_HOME}/webapps/birt/WEB-INF/
 }}}
 
-Append to the end of ${TOMCAT_HOME}/webapps/birt/WEB-INF/web.xml struts and vjdbc context configurations
+Copy BIRT 2.2 web.xml to work with MIAC auth context
+{{{
+cp $BIRT_DIST/birt22-web.xml ${TOMCAT_HOME}/webapps/birt/WEB-INF/web.xml
+}}}
+
+Or you can append to the end of ${TOMCAT_HOME}/webapps/birt/WEB-INF/web.xml struts and vjdbc context configurations
 
 {{{
     <!-- ECOM -->
