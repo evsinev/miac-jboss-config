@@ -1,5 +1,5 @@
 #summary Install Birt 2.2.2 web report engine to work with MIAC program
-#labels BIRT,tomcat
+#labels birt,tomcat
 
 == Required software ==
 
@@ -13,14 +13,19 @@
 export BIRT_DIST=/tmp/birt222
 mkdir $BIRT_DIST
 cd $BIRT_DIST
+
 # BIRT 2.2.2
 wget -c 'http://www.eclipse.org/downloads/download.php?file=/birt/downloads/drops/R-R1-2_2_2-200802271210/birt-runtime-2_2_2.zip&url=http://eclipse.i-logic.hu//birt/downloads/drops/R-R1-2_2_2-200802271210/birt-runtime-2_2_2.zip&mirror_id=70'
+
 # VJDBC ejb3 data provider for MIAC
 wget -c 'http://miac-jboss-config.googlecode.com/files/vjdbc3.ear'
+
 # Russian transation for BIRT
 mkdir -p /org/eclipse/birt/report/resource
 wget -c http://miac-jboss-config.googlecode.com/files/Messages_ru_RU.properties -O /org/eclipse/birt/report/resource/Messages_ru_RU.properties
 
+# RIAMS war
+cp ${SOMEPLACE}/riams.war .
 
 }}}
 == Install vjdbc application on jboss ==
@@ -44,4 +49,14 @@ jar xf ${$BIRT_DIST}/birt-runtime-2_2_2/birt.war
 Copy Messages_ru_RU.properties to ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/viewservlets.jar into /org/eclipse/birt/report/resource directory of this jar file
 {{{
 jar uf ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/viewservlets.jar ${BIRT_DIST}/org
+}}}
+
+== Install MIAC logon context ==
+
+Copy /WEB-INF/lib/*.jar from riams.war to ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/
+{{{
+mkdir $BIRT_DIST/riams
+cd $BIRT_DIST/riams
+jar xf ../riams.war
+cp WEB-INF/lib/*.jar ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/
 }}}
