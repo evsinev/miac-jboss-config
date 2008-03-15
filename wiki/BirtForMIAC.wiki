@@ -1,5 +1,5 @@
 #summary Install Birt 2.2.2 web report engine to work with MIAC program
-#labels birt,tomcat
+#labels birt,tomcat,Featured
 
 == Required software ==
 
