@@ -54,9 +54,75 @@ jar uf ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/viewservlets.jar ${BIRT_DIST}/org
 == Install MIAC logon context ==
 
 Copy /WEB-INF/lib/*.jar from riams.war to ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/
+Note: do not copy js.jar
 {{{
 mkdir $BIRT_DIST/riams
 cd $BIRT_DIST/riams
 jar xf ../riams.war
+rm $BIRT_DIST/riams/WEB-INF/lib/js.jar
 cp WEB-INF/lib/*.jar ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/
+}}}
+
+Copy struts and dwr configs
+{{{
+cp $BIRT_DIST/riams/WEB-INF/config-ecom.xml ${TOMCAT_HOME}/webapps/birt/WEB-INF/
+cp $BIRT_DIST/riams/WEB-INF/dwr-ecom.xml ${TOMCAT_HOME}/webapps/birt/WEB-INF/
+}}}
+
+Append to the end of ${TOMCAT_HOME}/webapps/birt/WEB-INF/web.xml struts and vjdbc context configurations
+
+{{{
+    <!-- ECOM -->
+    <!-- Struts mapping -->
+    <!-- Struts servlet -->
+    <servlet>
+        <servlet-name>action</servlet-name>
+        <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+        <init-param>
+            <param-name>config</param-name>
+            <param-value>/WEB-INF/config-ecom.xml</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>action</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+    <!-- LOGIN -->
+    <filter>
+        <filter-name>Login</filter-name>
+        <filter-class>ru.ecom.web.login.LoginFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>Login</filter-name>
+        <servlet-name>ViewerServlet</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Login</filter-name>
+        <servlet-name>EngineServlet</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Login</filter-name>
+        <servlet-name>action</servlet-name>
+    </filter-mapping>
+
+    <!-- VJDBC COntext -->
+    <filter>
+        <filter-name>vjdbc-context</filter-name>
+        <filter-class>ru.ecom.vjdbccontext.VjdbcContextFilter</filter-class>
+        <init-param>
+              <param-name>java.naming.provider.url</param-name>
+              <param-value>jnp://192.168.3.7:1099/</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>vjdbc-context</filter-name>
+        <servlet-name>ViewerServlet</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>vjdbc-context</filter-name>
+        <servlet-name>EngineServlet</servlet-name>
+    </filter-mapping>
 }}}
