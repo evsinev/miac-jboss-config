@@ -81,6 +81,18 @@ Copy vjdbc supports for BIRT
 cp $BIRT_DIST/vjdbc*.jar ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/
 }}}
 
+Copy jsp for logon screen
+{{{
+cp -R $BIRT_DIST/riams/WEB-INF/tiles ${TOMCAT_HOME}/webapps/birt/WEB-INF/
+mkdir -p ${TOMCAT_HOME}/webapps/birt/WEB-INF/actions/ecom_login
+cp $BIRT_DIST/riams/WEB-INF/actions/ecom_login/login.jsp ${TOMCAT_HOME}/webapps/birt/WEB-INF/actions/ecom_login
+}}}
+
+Copy riams version
+{{{
+cp $BIRT_DIST/riams/WEB-INF/buildnumber.txt ${TOMCAT_HOME}/webapps/birt/WEB-INF/
+}}}
+
 Append to the end of ${TOMCAT_HOME}/webapps/birt/WEB-INF/web.xml struts and vjdbc context configurations
 
 {{{
