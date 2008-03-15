@@ -22,7 +22,7 @@ wget -c 'http://www.eclipse.org/downloads/download.php?file=/birt/downloads/drop
 wget -c 'http://miac-jboss-config.googlecode.com/files/vjdbc3.ear'
 
 # Russian transation for BIRT
-mkdir -p /org/eclipse/birt/report/resource
+mkdir -p org/eclipse/birt/report/resource
 wget -c http://miac-jboss-config.googlecode.com/files/Messages_ru_RU.properties -O /org/eclipse/birt/report/resource/Messages_ru_RU.properties
 
 # vjdbc supports for BIRT
