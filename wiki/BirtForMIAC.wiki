@@ -24,6 +24,13 @@ wget -c 'http://miac-jboss-config.googlecode.com/files/vjdbc3.ear'
 mkdir -p /org/eclipse/birt/report/resource
 wget -c http://miac-jboss-config.googlecode.com/files/Messages_ru_RU.properties -O /org/eclipse/birt/report/resource/Messages_ru_RU.properties
 
+# vjdbc supports for BIRT
+{{{
+wget http://miac-jboss-config.googlecode.com/files/vjdbc.jar
+wget http://miac-jboss-config.googlecode.com/files/vjdbc-context.jar
+wget http://miac-jboss-config.googlecode.com/files/vjdbc-postgres.jar
+}}}
+
 # RIAMS war
 cp ${SOMEPLACE}/riams.war .
 
@@ -67,6 +74,11 @@ Copy struts and dwr configs
 {{{
 cp $BIRT_DIST/riams/WEB-INF/config-ecom.xml ${TOMCAT_HOME}/webapps/birt/WEB-INF/
 cp $BIRT_DIST/riams/WEB-INF/dwr-ecom.xml ${TOMCAT_HOME}/webapps/birt/WEB-INF/
+}}}
+
+Copy vjdbc supports for BIRT
+{{{
+cp $BIRT_DIST/vjdbc*.jar ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/
 }}}
 
 Append to the end of ${TOMCAT_HOME}/webapps/birt/WEB-INF/web.xml struts and vjdbc context configurations
