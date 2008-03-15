@@ -1,0 +1,18 @@
+#labels BIRT,tomcat
+#Install Birt 2.2.2 web report engine to work with MIAC program
+
+== Required software ==
+
+# [http://www.eclipse.org/downloads/download.php?file=/birt/downloads/drops/R-R1-2_2_2-200802271210/birt-runtime-2_2_2.zip BIRT Report Engine]
+# VJDBC driver with EJB3 supports
+# 
+
+Add your content here.
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
