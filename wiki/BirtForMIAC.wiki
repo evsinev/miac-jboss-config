@@ -36,6 +36,9 @@ wget http://miac-jboss-config.googlecode.com/files/birt22-web.xml
 # New version of apache commons logging 1.1.1
 wget http://www.sai.msu.su/apache/commons/logging/binaries/commons-logging-1.1.1-bin.zip
 
+# JBoss class loader to work with BIRT osgi bundle protocol
+wget http://miac-jboss-config.googlecode.com/files/jboss_osgi_bundle_fix.jar
+
 # RIAMS war
 cp ${SOMEPLACE}/riams.war .
 
@@ -46,6 +49,22 @@ cp ${SOMEPLACE}/riams.war .
 JBOSS_HOME=/opt/jboss4.2.2-GA
 cp ${$BIRT_DIST}/vjdbc3.ear ${JBOSS_HOME}/server/default/deploy/ecom/
 }}}
+
+== Patch jboss class loader to work with BIRT osgi bundle protocol ==
+{{{
+cd $BIRT_DIST
+jar xf jboss_osgi_bundle_fix.jar
+jar uf ${JBOSS_HOME}/bin/run.jar ru
+}}}
+
+For JBoss 4.0.4-GA in file ${JBOSS_HOME}/server/default/deploy/dynclassloader-service.xml and in JBoss 4.2.2-GA in file ${JBOSS_HOME}/server/default/conf/jboss-service.xml replace 
+{{{
+from:
+<attribute name="ClassName">org.jboss.system.JBossRMIClassLoader</attribute> 
+to: 
+<attribute name="ClassName">ru.ecom.jboss.system.RMIClassLoaderBundleEntryFix</attribute>
+}}}
+
 
 == Install BIRT Report engine to tomcat ==
 Extract birt-runtime-2_2_2.zip/birt-runtime-2_2_2/birt.war to ${TOMCAT_HOME}/webapps/birt
