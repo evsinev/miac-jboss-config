@@ -79,7 +79,8 @@ jar xf ${BIRT_DIST}/birt-runtime-2_2_2/birt.war
 
 Copy Messages_ru_RU.properties to ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/viewservlets.jar into /org/eclipse/birt/report/resource directory of this jar file
 {{{
-jar uf ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/viewservlets.jar ${BIRT_DIST}/org
+cd ${BIRT_DIST}
+jar uf ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/viewservlets.jar org
 }}}
 
 == Install MIAC logon context ==
@@ -96,10 +97,10 @@ cp WEB-INF/lib/*.jar ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/
 
 cd $BIRT_DIST
 jar xf commons-logging-1.1.1-bin.zip
-cp commons-logging-1.1.1.jar ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/
+cp commons-logging-1.1.1/commons-logging-1.1.1.jar ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/
 
-cp /riams/WEB-INF/lib/*.jar ${TOMCAT_HOME}/webapps/birt/WEB-INF/platform/plugins/org.eclipse.birt.report.data.oda.jdbc_2.2.2.r22x_v20071206/drivers/
-cp commons-logging-1.1.1.jar ${TOMCAT_HOME}/webapps/birt/WEB-INF/platform/plugins/org.eclipse.birt.report.data.oda.jdbc_2.2.2.r22x_v20071206/drivers/
+cp riams/WEB-INF/lib/*.jar ${TOMCAT_HOME}/webapps/birt/WEB-INF/platform/plugins/org.eclipse.birt.report.data.oda.jdbc_2.2.2.r22x_v20071206/drivers/
+cp commons-logging-1.1.1/commons-logging-1.1.1.jar ${TOMCAT_HOME}/webapps/birt/WEB-INF/platform/plugins/org.eclipse.birt.report.data.oda.jdbc_2.2.2.r22x_v20071206/drivers/
 
 }}}
 
