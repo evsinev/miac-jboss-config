@@ -155,3 +155,14 @@ Create ${TOMCAT_HOME}/WEB-INF/actions/start.jsp
     </tiles:put>
 </tiles:insert>
 }}}
+
+== Edit main menu ==
+In file ${TOMCAT_HOME}/webapps/birt/WEB-INF/tiles/mainLayout.jsp edit all msh:sideLink tags
+{{{
+from 
+ <msh:sideLink params="" styleId="mainMenuLpu" action="/entityParentList-mis_lpu.do?id=-1" name="ЛПУ"
+                          title="Список ЛПУ" roles="/Policy/Mis/MisLpu/View"/>
+to
+ <msh:sideLink params="" styleId="mainMenuLpu" action="../../riams/entityParentList-mis_lpu.do?id=-1" name="ЛПУ"
+                          title="Список ЛПУ" roles="/Policy/Mis/MisLpu/View"/>
+}}}
