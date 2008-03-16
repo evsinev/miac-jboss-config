@@ -85,9 +85,9 @@ jar uf ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/viewservlets.jar org
 
 == Install MIAC logon context ==
 
-Copy /WEB-INF/lib/*.jar from riams.war to ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/
-Note: do not copy js.jar
 {{{
+# Copy /WEB-INF/lib/*.jar from riams.war to ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/
+# Note: do not copy js.jar
 mkdir $BIRT_DIST/riams
 cd $BIRT_DIST/riams
 jar xf ../riams.war
@@ -102,33 +102,56 @@ cp commons-logging-1.1.1/commons-logging-1.1.1.jar ${TOMCAT_HOME}/webapps/birt/W
 cp riams/WEB-INF/lib/*.jar ${TOMCAT_HOME}/webapps/birt/WEB-INF/platform/plugins/org.eclipse.birt.report.data.oda.jdbc_2.2.2.r22x_v20071206/drivers/
 cp commons-logging-1.1.1/commons-logging-1.1.1.jar ${TOMCAT_HOME}/webapps/birt/WEB-INF/platform/plugins/org.eclipse.birt.report.data.oda.jdbc_2.2.2.r22x_v20071206/drivers/
 
-}}}
+# Copy struts and dwr configs
 
-Copy struts and dwr configs
-{{{
 cp $BIRT_DIST/riams/WEB-INF/config-ecom.xml ${TOMCAT_HOME}/webapps/birt/WEB-INF/
 cp $BIRT_DIST/riams/WEB-INF/dwr-ecom.xml ${TOMCAT_HOME}/webapps/birt/WEB-INF/
-}}}
 
-Copy vjdbc supports for BIRT
-{{{
+# Copy vjdbc supports for BIRT
+
 cp $BIRT_DIST/vjdbc*.jar ${TOMCAT_HOME}/webapps/birt/WEB-INF/lib/
 cp $BIRT_DIST/vjdbc*.jar ${TOMCAT_HOME}/webapps/birt/WEB-INF/platform/plugins/org.eclipse.birt.report.data.oda.jdbc_2.2.2.r22x_v20071206/drivers/
-}}}
 
-Copy jsp for logon screen
-{{{
+# Copy jsp for logon screen
 cp -R $BIRT_DIST/riams/WEB-INF/tiles ${TOMCAT_HOME}/webapps/birt/WEB-INF/
 mkdir -p ${TOMCAT_HOME}/webapps/birt/WEB-INF/actions/ecom_login
 cp $BIRT_DIST/riams/WEB-INF/actions/ecom_login/login.jsp ${TOMCAT_HOME}/webapps/birt/WEB-INF/actions/ecom_login
-}}}
+cp -R $BIRT_DIST/riams/index.jsp ${TOMCAT_HOME}/webapps/birt/index.jsp
 
-Copy riams version
-{{{
+# Copy riams version
 cp $BIRT_DIST/riams/WEB-INF/buildnumber.txt ${TOMCAT_HOME}/webapps/birt/WEB-INF/
+
+
+# Copy BIRT 2.2 web.xml to work with MIAC auth context
+cp $BIRT_DIST/birt222-web.xml ${TOMCAT_HOME}/webapps/birt/WEB-INF/web.xml
 }}}
 
-Copy BIRT 2.2 web.xml to work with MIAC auth context
+== Create start page ==
+Create ${TOMCAT_HOME}/WEB-INF/actions/start.jsp
 {{{
-cp $BIRT_DIST/birt222-web.xml ${TOMCAT_HOME}/webapps/birt/WEB-INF/web.xml
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://www.nuzmsh.ru/tags/msh" prefix="msh" %>
+
+<tiles:insert page="/WEB-INF/tiles/mainLayout.jsp" flush="true">
+
+    <tiles:put name='title' type='string'>
+        <msh:title mainMenu="Report">Отчеты</msh:title>
+    </tiles:put>
+
+    <tiles:put name='body' type='string'>
+        <table class='mainMenu'>
+        <tr>
+        <td class='col1'>
+            <div class='menu'>
+                <h2>Список доступных отчетов</h2>
+                <ul>
+                    <li><a href='frameset?__report=main.rptdesign'>Отчет по категориям льготников</a></li>
+                </ul>
+            </div>
+        </td>
+        </tr>
+        </table>
+    </tiles:put>
+</tiles:insert>
 }}}
