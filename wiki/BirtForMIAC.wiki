@@ -23,7 +23,7 @@ wget -c 'http://miac-jboss-config.googlecode.com/files/vjdbc3.ear'
 
 # Russian transation for BIRT
 mkdir -p org/eclipse/birt/report/resource
-wget -c http://miac-jboss-config.googlecode.com/files/Messages_ru_RU.properties -O /org/eclipse/birt/report/resource/Messages_ru_RU.properties
+wget -c http://miac-jboss-config.googlecode.com/files/Messages_ru_RU.properties -O org/eclipse/birt/report/resource/Messages_ru_RU.properties
 
 # vjdbc supports for BIRT
 wget http://miac-jboss-config.googlecode.com/files/vjdbc.jar
@@ -31,7 +31,7 @@ wget http://miac-jboss-config.googlecode.com/files/vjdbc-context-1.0.2.jar
 wget http://miac-jboss-config.googlecode.com/files/vjdbc-postgres.jar
 
 # BIRT 2.2 web.xml
-wget http://miac-jboss-config.googlecode.com/files/birt22-web.xml
+wget http://miac-jboss-config.googlecode.com/files/birt222-web.xml
 
 # New version of apache commons logging 1.1.1
 wget http://www.sai.msu.su/apache/commons/logging/binaries/commons-logging-1.1.1-bin.zip
@@ -129,7 +129,7 @@ cp $BIRT_DIST/riams/WEB-INF/buildnumber.txt ${TOMCAT_HOME}/webapps/birt/WEB-INF/
 
 Copy BIRT 2.2 web.xml to work with MIAC auth context
 {{{
-cp $BIRT_DIST/birt22-web.xml ${TOMCAT_HOME}/webapps/birt/WEB-INF/web.xml
+cp $BIRT_DIST/birt222-web.xml ${TOMCAT_HOME}/webapps/birt/WEB-INF/web.xml
 }}}
 
 Or you can append to the end of ${TOMCAT_HOME}/webapps/birt/WEB-INF/web.xml struts and vjdbc context configurations
