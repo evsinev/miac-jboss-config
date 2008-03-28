@@ -1,5 +1,5 @@
 #labels jboss,debug,eclipse
-#Отладки приложения на стороне jboss из eclipse
+#Отладка приложения на стороне jboss из eclipse
 
 = Включение отладчика на стороне jboss =
 В файле jboss/bin/run.sh 
