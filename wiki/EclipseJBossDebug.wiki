@@ -1,7 +1,7 @@
 #labels jboss,debug,eclipse
 #Отладка приложения на стороне jboss из eclipse
 
-= Включение отладчика на стороне jboss =
+== Включение отладчика на стороне jboss ==
 В файле jboss/bin/run.sh 
 добавить 
 {{{
@@ -9,7 +9,7 @@ export JAVA_OPTS="-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_
 }}}
 
 
-= Подключение отладчиком eclipse к jboss =
+== Подключение отладчиком eclipse к jboss ==
   # Выбираем пункт меню *Run/Open Run Dialog...* 
   # Выбираем *Remote Java Application*
   # Создаем новую конфигурацию, нажимая на кнопку *New launch configuration* 
@@ -17,5 +17,5 @@ export JAVA_OPTS="-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_
   # Выбираем проект для отладки 
   # Запускаем
 
-= Работа с отладчиком =
+== Работа с отладчиком ==
 Добавляем точку останова *CTRL-SHIFT-B* в коде.
