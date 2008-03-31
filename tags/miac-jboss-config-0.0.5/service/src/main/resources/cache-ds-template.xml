@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources>
+  <no-tx-datasource>
+    <jndi-name>RiamsBaseDS</jndi-name>
+    <connection-url>jdbc:Cache://$HOSTNAME$:$PORT$/$DATABASE$</connection-url>
+                             <!--¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ -->
+    <driver-class>com.intersys.jdbc.CacheDriver</driver-class>
+    <user-name>$USERNAME$</user-name>
+    <password>$PASSWORD$</password>
+    <!-- Пул соединений -->
+    <min-pool-size>5</min-pool-size>
+    <max-pool-size>20</max-pool-size>
+    <check-valid-connection-sql>SELECT 1+1</check-valid-connection-sql>
+    <!-- 10 минут на запрос-->
+    <idle-timeout-minutes>600</idle-timeout-minutes>
+      <metadata>
+         <type-mapping>Cache 5.2</type-mapping>
+      </metadata>
+  </no-tx-datasource>
+</datasources>

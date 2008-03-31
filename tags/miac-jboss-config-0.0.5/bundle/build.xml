@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="bundle" default="all" basedir=".">
+
+    <property file="${user.home}/build.properties"/>
+
+    <target name='clean'>
+        <delete dir='./target' />
+    </target>
+
+    <target name="all" depends='clean'>
+
+        <delete dir='./target/dist' />
+        <mkdir dir="./target/dist" />
+	
+	<mkdir dir='./target/dist/msh-util-voc-jar' />
+	<copy  file='${libdir}/msh/util-voc/msh-util-voc.jar' todir='./target/dist/msh-util-voc-jar'/>
+
+	<mkdir dir='./target/dist/ecom-jboss-jar' />
+	<copy  file='${libdir}/ecom/jboss/ecom-jboss.jar' todir='./target/dist/ecom-jboss-jar'/>
+
+	<mkdir dir='./target/dist/cachedb-jar' />
+	<copy  file='${libdir}/cache/CacheDB.jar' todir='./target/dist/cachedb-jar'/>
+
+        <copy todir='./target/dist'>
+            <fileset dir='./src'>
+                <include name='**/*' />
+            </fileset>
+        </copy>
+
+        <!--<jar basedir="./target/jetty" file="./target/jbossinstaller.jar" manifest="manifest.mf"/>-->
+    </target>
+</project>
