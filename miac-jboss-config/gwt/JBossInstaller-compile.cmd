@@ -1,0 +1,1 @@
+@java -cp "%~dp0\src;%~dp0\bin;C:/opt/gwt-windows-1.4.61/gwt-user.jar;C:/opt/gwt-windows-1.4.61/gwt-dev-windows.jar" com.google.gwt.dev.GWTCompiler -out "%~dp0\www" %* ru.ecom.jbossinstaller.JBossInstaller

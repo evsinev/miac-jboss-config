@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jettyinstaller" default="all" basedir=".">
+
+    <property file="${user.home}/build.properties"/>
+
+    <target name='clean'>
+        <delete dir='./target' />
+    </target>
+
+    <target name='compile'>
+        <mkdir dir="./target/classes" />
+        <javac destdir="./target/classes" srcdir="./src" debug='on'>
+            <classpath>
+                <fileset dir='../'>
+                    <include name='**/*.jar' />
+                </fileset>
+                <fileset dir='${lib.dir}/gwt'>
+                    <include name='**/*.jar' />
+                </fileset>
+            </classpath>
+		
+        </javac>
+    </target>
+
+    <target name="all" depends="clean,compile">
+
+        <mkdir dir="./target/jetty" />
+        <unzip dest="./target/jetty" src="../lib/jetty-6.1.7.jar"             />
+        <unzip dest="./target/jetty" src="../lib/jetty-util-6.1.7.jar"        />
+        <unzip dest="./target/jetty" src="../lib/servlet-api-2.5-6.1.7.jar"   />
+        <unzip dest="./target/jetty" src="${lib.dir}/gwt/gwt-servlet.jar"     />
+        <unzip dest="./target/jetty" src="../gwt/target/ecom-gwt-miac-jboss-config.jar" />
+        <unzip dest="./target/jetty" src="../lib/postgresql-8.2-504.jdbc3.jar"/>
+        <unzip dest="./target/jetty" src="../lib/CacheDB.jar"                 />
+
+
+        <copy todir="./target/jetty">
+            <fileset dir="../service/src/main/resources">
+                <include name="*.xml" />
+            </fileset>
+        </copy>
+
+        <copy todir="./target/jetty" file='favicon.ico' />
+
+        <copy todir="./target/jetty">
+            <fileset dir="./target/classes">
+                <include name="**/*.class" />
+            </fileset>
+            <fileset dir="../service/target/classes">
+                <include name="**/*.class" />
+            </fileset>
+        </copy>
+
+        <copy todir='./target/jetty'>
+            <fileset dir='../gwt/www/ru.ecom.jbossinstaller.JBossInstaller'>
+                <include name='**/*' />
+            </fileset>
+        </copy>
+
+        <copy todir='./target/jetty'>
+            <fileset dir='../bundle/target/dist'>
+                <include name='**/*' />
+            </fileset>
+        </copy>
+
+        <jar basedir="./target/jetty" file="./target/mjc.jar" manifest="manifest.mf"/>
+    </target>
+</project>
