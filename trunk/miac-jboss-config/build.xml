@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="msh" default="all" basedir=".">
+
+    <property file="${user.home}/build.properties"/>
+
+    <target name='all'>
+        <ant dir='./bundle'  target='all' />
+        <ant dir='./gwt'     target='all' />
+        <ant dir='./service' target='all' />
+        <ant dir='./jetty'   target='all' />
+    </target>
+
+    <target name='clean'>
+        <delete dir='./classes' />
+        <ant dir='./bundle'  target='clean' />
+        <ant dir='./gwt'     target='clean' />
+        <ant dir='./service' target='clean' />
+        <ant dir='./jetty'   target='clean' />
+    </target>
+
+</project>

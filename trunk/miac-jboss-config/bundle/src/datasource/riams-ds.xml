@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<datasources>
+  <no-tx-datasource>
+    <jndi-name>RiamsBaseDS</jndi-name>
+    <connection-url>jdbc:Cache://192.168.1.2:1972/RIAMS</connection-url>
+    <driver-class>com.intersys.jdbc.CacheDriver</driver-class>
+    <user-name>_system</user-name>
+    <password>sys</password>
+    <min-pool-size>5</min-pool-size>
+    <max-pool-size>20</max-pool-size>
+      <metadata>
+         <type-mapping>Cache 5.2</type-mapping>
+      </metadata>
+  </no-tx-datasource>
+
+</datasources>

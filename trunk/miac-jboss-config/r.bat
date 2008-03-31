@@ -1,0 +1,1 @@
+java -jar jetty/target/mjc.jar

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jettyinstaller" default="all" basedir=".">
+
+    <property file="${user.home}/build.properties"/>
+
+    <target name='clean'>
+        <delete dir='./target' />
+    </target>
+
+    <target name='compile'>
+        <mkdir dir="./target/classes" />
+        <javac destdir="./target/classes" srcdir="./src/main/java" encoding='utf-8' debug="on">
+            <classpath>
+                <fileset dir='../lib'>
+                    <include name='**/*.jar' />
+                </fileset>
+                <fileset dir='../gwt/target'>
+                    <include name='**/*.jar' />
+                </fileset>
+                <fileset dir='${lib.dir}/gwt'>
+                    <include name='**/*.jar' />
+                </fileset>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="all" depends="clean,compile">
+       <jar basedir="./target/classes" file="./target/service.jar"/>
+    </target>
+</project>

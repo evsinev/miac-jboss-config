@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="bundle" default="all" basedir=".">
+
+    <property file="${user.home}/build.properties"/>
+
+	<property name="appname" value="miac-jboss-config"/>
+
+	<macrodef name="gwtCompile">
+		<attribute name="module" />
+		<attribute name="classpathref" default="gwt.compile.class.path" />
+		<attribute name="output" default="www/" />
+		<sequential>
+			<java classpathref="@{classpathref}" classname="com.google.gwt.dev.GWTCompiler" fork="true">
+				<arg value="-out" />
+				<arg value="@{output}" />
+				<arg value="@{module}" />
+			</java>
+		</sequential>
+	</macrodef>
+
+	<path id="gwt.compile.class.path">
+		<pathelement location="src/" />
+
+		<pathelement path="${lib.dir}/gwt/gwt-user.jar" />
+		<pathelement path="${lib.dir}/gwt/gwt-dev-windows.jar" />
+	</path>
+
+	<!-- Компиляция java -->
+	<target name="java.compile" description="Compile">
+		<mkdir dir="./bin"/>
+		<javac destdir="./bin" encoding="utf-8" debug="true">
+			<src path="./src" />
+			<classpath path="${lib.dir}/gwt/gwt-servlet.jar" />
+		</javac>
+	</target>
+
+    <target name='clean'>
+        <delete dir='./bin' />
+        <delete dir='./www' />
+        <delete dir='./tomcat' />
+        <delete dir='./.gwt-cache' />
+        <delete dir='./target' />
+    </target>
+    
+	<target name="jar" description="archive" depends="java.compile">
+		<mkdir dir="./target"/>
+		<delete file='./target/ecom-gwt-${appname}.jar' />
+
+		<jar destfile="./target/ecom-gwt-${appname}.jar">
+			<fileset dir="./bin">
+				<include name='ru/ecom/jbossinstaller/client/service/**/*' />
+			</fileset>
+		</jar>
+	</target>
+    
+	<target name='dist.java' depends="jar">
+		<delete file='${lib.dir}/ecom/gwt/${appname}/ecom-gwt-${appname}.jar' />
+		<copy file='./target/ecom-gwt-${appname}.jar' tofile='${lib.dir}/ecom/gwt/${appname}/ecom-gwt-${appname}.jar' overwrite="true" />
+	</target>
+
+
+	<target name='dist' depends="dist.java, js.compile">
+		<delete dir='${lib.dir}/ecom/gwt/${appname}/webapp'/>
+		<mkdir  dir="${lib.dir}/ecom/gwt/${appname}/webapp"/>
+		<copy todir='${lib.dir}/ecom/gwt/${appname}/webapp' overwrite="true">
+			<fileset dir='./www' includes="**/*" />
+		</copy>
+	</target>
+
+	<!-- javascript compile -->
+	<target name='js.compile'>
+		<gwtCompile module="ru.ecom.jbossinstaller.JBossInstaller" />
+	</target>
+
+	<target name='all' depends="clean,dist" />
+</project>
