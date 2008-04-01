@@ -125,7 +125,8 @@ public class ConfigServiceImpl extends RemoteServiceServlet implements IConfigSe
             try {
                 // не только проверяем соединение, но и выполняем простой запрос
                 Statement stmt = connection.createStatement();
-                try {
+				try {
+                /* // TODO must be investigated intersystems cache sql query for this functionality
                     ResultSet rs = stmt.executeQuery("select 1+1") ;
                     try {
                         if(rs.next()) {
@@ -137,6 +138,7 @@ public class ConfigServiceImpl extends RemoteServiceServlet implements IConfigSe
                     } finally {
                         rs.close() ;
                     }
+				*/
                 } finally {
                     stmt.close();
                 }
