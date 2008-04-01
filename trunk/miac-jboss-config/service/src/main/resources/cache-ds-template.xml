@@ -10,7 +10,8 @@
     <!-- Пул соединений -->
     <min-pool-size>5</min-pool-size>
     <max-pool-size>20</max-pool-size>
-    <check-valid-connection-sql>SELECT 1+1</check-valid-connection-sql>
+    <!-- select another query for this -->
+    <!--<check-valid-connection-sql>SELECT 1+1</check-valid-connection-sql>-->
     <!-- 10 минут на запрос-->
     <idle-timeout-minutes>600</idle-timeout-minutes>
       <metadata>
